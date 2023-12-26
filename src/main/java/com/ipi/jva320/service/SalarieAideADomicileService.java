@@ -107,6 +107,14 @@ public class SalarieAideADomicileService {
         return salarieAideADomicileRepository.save(salarieAideADomicile);
     }
 
+    public SalarieAideADomicile saveOrUpdateSalarie(SalarieAideADomicile salarieAideADomicile)
+            throws SalarieException, EntityExistsException{
+        if (salarieAideADomicile.getId() == null) {
+            throw new SalarieException("L'id doit être fourni");
+        }
+        return salarieAideADomicileRepository.save(salarieAideADomicile);
+    }
+
     public void deleteSalarieAideADomicile(Long id)
             throws SalarieException, EntityExistsException {
         if (id == null) {
