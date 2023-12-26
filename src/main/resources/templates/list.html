@@ -24,11 +24,6 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:if="${listeSalarie.isEmpty()}">
-          <th scope="row">2</th>
-          <td>Robert Martin</td>
-          <td><a href="/salaries/aide/3" class="btn btn-primary ember-view">Détail</a></td>
-        </tr>
         <tr th:each="salarie : ${listeSalarie}" th:unless="${listeSalarie.isEmpty()}">
           <th scope="row" th:text="${salarie.id}"></th>
           <td th:text="${salarie.nom}"></td>
@@ -36,17 +31,19 @@
         </tr>
         </tbody>
       </table>
+      <span th:if="${listeSalarie.isEmpty()}">Aucun salarie ajouté, veuillez en ajouter</span>
       <div class="row">
-        <div class="col-lg-6"><p>Affichage des salariés 1 à 10 sur un total de <span>11</span></p>
+        <div class="col-lg-6" th:unless="${listeSalarie.isEmpty()}">
+          <p>Affichage des salariés 1 à 10 sur un total de <span th:text="${listeSalarie.size()}"></span></p>
         </div>
         <div class="col-lg-6">
           <ul class="pagination">
-            <li class="page-item disabled">
-              <a class="page-link" href="/salaries?page=-1&amp;size=10&amp;sortProperty=nom&amp;sortDirection=ASC">«</a>
+            <li class="page-item">
+              <a class="page-link" th:href="@{/salaries(page=${pageNum}-1, size=10, sortProperty='id', sortDirection='ASC')}">«</a>
             </li>
-            <li><a href="#" class="page-link">Page 1</a></li>
+            <li><a th:text="'Page ' + ${pageNum}" href="#" class="page-link"></a></li>
             <li class="page-item ">
-              <a class="page-link" href="/salaries?page=1&amp;size=10&amp;sortProperty=nom&amp;sortDirection=ASC">»</a></li>
+              <a class="page-link" th:href="@{/salaries(page=${pageNum}+1, size=10, sortProperty='id', sortDirection='ASC')}">»</a></li>
           </ul></div>
       </div>
     </div>

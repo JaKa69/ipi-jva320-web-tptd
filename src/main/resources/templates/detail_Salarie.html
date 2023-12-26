@@ -100,7 +100,7 @@
         <div class="row mt-2">
             <div class="col-lg-6">
                 <input form="saveForm" class="btn btn-primary" type="submit" value="Enregistrer">
-                <a th:href="@{/salaries/${salarieDetail.id}/delete}" class="btn btn-danger">Supprimer</a>
+                <a th:href="@{/salaries/{id}/delete(id=${salarieDetail.id})}" class="btn btn-danger">Supprimer</a>
             </div>
         </div>
 

@@ -18,13 +18,11 @@ public class DataInitService implements CommandLineRunner {
 
     @Override
     public void run(String... argv) throws Exception {
-        if (this.salarieAideADomicileService.countSalaries() != 0) {
-            return;
+        for (int i=0; i<100; i++) {
+            this.salarieAideADomicileService.creerSalarieAideADomicile(
+                    new SalarieAideADomicile("test"+i, LocalDate.parse("2022-12-05"), LocalDate.parse("2022-12-05"),
+                            i+3, (double) i /5,
+                            i+5, (double) i /2, i+4));
         }
-
-//        SalarieAideADomicile s1 = this.salarieAideADomicileService.creerSalarieAideADomicile(
-//                new SalarieAideADomicile("Jean", LocalDate.parse("2022-12-05"), LocalDate.parse("2022-12-05"),
-//                        20, 0,
-//                        80, 10, 1));
     }
 }

@@ -18,4 +18,6 @@ public interface SalarieAideADomicileRepository extends PagingAndSortingReposito
     Double partCongesPrisTotauxAnneeNMoins1();
 
     List<SalarieAideADomicile> findAllByNom(String nom, Pageable pageable);
+
+    List<SalarieAideADomicile> findAllByIdBefore(Long id);
 }

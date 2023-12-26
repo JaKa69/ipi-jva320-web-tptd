@@ -14,6 +14,7 @@ public class HomeController {
     @GetMapping(value = "/")
     public String home(ModelMap model) {
         model.put("nbSalaries", salarieAideADomicileService.countSalaries());
+        model.put("pageNum", 0);
         return "home";
     }
 }

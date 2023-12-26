@@ -7,6 +7,7 @@ import com.ipi.jva320.repository.SalarieAideADomicileRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityExistsException;
@@ -29,6 +30,7 @@ public class SalarieAideADomicileService {
 
     @Autowired
     private SalarieAideADomicileRepository salarieAideADomicileRepository;
+    private int pageNum = 0;
 
     public SalarieAideADomicileService() {
     }
@@ -288,4 +290,11 @@ public class SalarieAideADomicileService {
         salarieAideADomicileRepository.save(salarieAideADomicile);
     }
 
+    public int getPageNum() {
+        return pageNum;
+    }
+
+    public void setPageNum(int pageNum) {
+        this.pageNum = pageNum;
+    }
 }
